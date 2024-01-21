@@ -6,6 +6,8 @@ import { ArrowUpRightFromSquare, FileCode2 } from "lucide-react";
 import { client, urlFor } from "@/app/lib/sanity";
 import { simpleProject } from "@/app/lib/interface";
 
+export const revalidate = 30 // revalidate at most 30 sec
+
 async function getData(){
     const query = `
     *[_type == "project"] | order(_createdAt desc){

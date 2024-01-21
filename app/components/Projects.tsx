@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightFromSquare, FileCode2 } from "lucide-react";
 
+
+export const revalidate = 30 // revalidate at most 30 sec
+
 async function getData(){
     const query = `
     *[_type == "project"] | order(_createdAt desc){

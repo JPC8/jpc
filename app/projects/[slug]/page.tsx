@@ -3,6 +3,8 @@ import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 
+export const revalidate = 30 // revalidate at most 30 sec
+
 async function getData(slug:string){
     const query = `
     *[_type == "project" && slug.current == '${slug}']{
@@ -35,7 +37,7 @@ export default async function ProjectRoute({params}:{params:{slug:string}}){
                         <Image src={""} alt={data.slug+" image"} width={1080} height={360} className="w-full rounded-xl bg-blue-400 bg-cover bg-center" priority />
                     </div>
 
-                    <div className="prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary prose-a:text-primary mt-16">
+                    <div className="prose prose-lg prose-blue mt-16 dark:prose-invert prose-a:text-primary prose-li:marker:text-primary">
                         <PortableText value={data.content} />
                     </div>
 
