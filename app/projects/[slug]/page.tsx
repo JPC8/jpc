@@ -1,4 +1,7 @@
-import { fullProject } from "@/app/lib/interface";
+/* eslint-disable @next/next/no-async-client-component */
+// "use client"
+
+import { fullProject, tags } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
@@ -19,9 +22,21 @@ async function getData(slug:string){
     return data;
 }
 
+async function getDataTag(){
+    const query = `
+    *[_type == "tag"]{
+        title,
+        imageUrl
+    }
+    `;
+
+    const data = await client.fetch(query);
+    return data;
+}
+
 export default async function ProjectRoute({params}:{params:{slug:string}}){
     const data:fullProject = await getData(params.slug);
-    // console.log(data);
+    const taggable:tags[] = await getDataTag();
     return(
         <div className="mt-10 grid h-fit place-items-center md:mt-28">
             <div className="z-10 w-11/12 max-w-screen-2xl">
@@ -37,12 +52,21 @@ export default async function ProjectRoute({params}:{params:{slug:string}}){
                         <Image src={""} alt={data.slug+" image"} width={1080} height={360} className="w-full rounded-xl bg-blue-400 bg-cover bg-center" priority />
                     </div>
 
+                    { taggable.map((tg, idx) =>(
+                        <div key ={idx} className="">
+                            <p  className="">{tg.title}</p>
+                            <Image src={tg.imageUrl} alt={tg.title+" logo"} width={10} height={10}/>
+                        </div>
+                    )) }
+
                     <div className="prose prose-lg prose-blue mt-16 dark:prose-invert prose-a:text-primary prose-li:marker:text-primary">
                         <PortableText value={data.content} />
                     </div>
 
-                </div>
 
+
+
+                </div>
                 
             </div>
         </div>

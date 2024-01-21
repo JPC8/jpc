@@ -11,3 +11,8 @@ export interface simpleProject {
     content: any;
     proImg: any;
   }
+
+  export interface tags{
+    title: string;
+    imageUrl: string;
+  }
