@@ -26,6 +26,14 @@ export default {
       title: 'Description'
     },
     {
+      name: 'cvContent',
+      type: 'array',
+      title: 'CV Content',
+      of: [{
+        type: 'block'
+      }]
+    },
+    {
       name: 'summary',
       type: 'array',
       title: 'Summary',
@@ -75,9 +83,14 @@ export default {
       }]
     },
     {
-      title: 'Project Date',
+      title: 'Project Duration (Mmm YY - Mmm YY)',
       name: 'proDate',
-      type: 'datetime'
+      type: 'string'
+    },
+    {
+      title: 'Project Date',
+      name: 'pDate',
+      type: 'date'
     },
     {
       name: 'gallery',
@@ -92,6 +105,11 @@ export default {
     {
       title: 'Is this a featured project?',
       name: 'featured',
+      type: 'boolean'
+    },
+    {
+      title: 'Is this a CV project?',
+      name: 'cv',
       type: 'boolean'
     }
   ]

@@ -13,5 +13,10 @@ export default {
         name: 'tagImg',
         type: 'image'
     },
+    {
+        title: 'Is this a Language?',
+        name: 'lang',
+        type: 'boolean'
+      }
     ]
 }

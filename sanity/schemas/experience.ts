@@ -8,7 +8,7 @@ export default {
         title: 'Title'
       },
       {
-        title: 'Years of Experience',
+        title: 'Years of Experience (Mmm YY - Mmm YY)',
         name: 'yoe',
         type: 'string'
       },
@@ -46,5 +46,10 @@ export default {
         ]
   
       },
+      {
+        title: 'Display in CV?',
+        name: 'cv',
+        type: 'boolean'
+      }
     ]
   }

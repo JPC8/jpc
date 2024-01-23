@@ -25,5 +25,10 @@ export default {
       type: 'image',
       title: 'Link Icon'
     },
+    {
+      title: 'Display in CV?',
+      name: 'cv',
+      type: 'boolean'
+    }
   ]
 }

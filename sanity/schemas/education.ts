@@ -33,5 +33,18 @@ export default {
       ]
 
     },
+    {
+      name: 'cvContent',
+      type: 'array',
+      title: 'CV Content',
+      of: [{
+        type: 'block'
+      }]
+    },
+    {
+      title: 'Display in CV?',
+      name: 'cv',
+      type: 'boolean'
+    }
   ]
 }
