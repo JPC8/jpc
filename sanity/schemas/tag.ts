@@ -9,9 +9,9 @@ export default {
         title: 'Title'
       },
     {
-        title: 'Image URL',
-        name: 'imageUrl',
-        type: 'url'
+        title: 'Tag Image',
+        name: 'tagImg',
+        type: 'image'
     },
     ]
 }
