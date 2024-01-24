@@ -46,3 +46,19 @@ export interface about {
   tagline: string;
   profileIcon: any;
 }
+
+export interface aboutNContact {
+  about:[{
+    content: any;
+  }],
+  contact:[
+    {
+      title: string,
+      name: string,
+      url: string,
+      Icon: any,
+    }
+  ]
+  
+  
+}

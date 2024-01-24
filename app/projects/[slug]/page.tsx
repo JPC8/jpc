@@ -66,8 +66,8 @@ export default async function ProjectRoute({params}:{params:{slug:string}}){
                 </div>
 
                 <div className="flex flex-wrap py-3">
-                    <div  className="basis-full p-3">
-                        <div className="h-fit w-11/12 basis-full rounded-xl border bg-cover bg-center">
+                    <div className="basis-full p-3 md:p-6 lg:p-12">
+                        <div className="flex basis-full justify-center rounded-xl border bg-cover bg-center">
                             <Image src={urlFor(data.proImg).url()} alt={data.slug+" image"} width={720} height={720} className="w-full rounded-xl bg-blue-400 bg-cover bg-center" priority />
                         </div>
                     </div>
