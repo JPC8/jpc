@@ -32,3 +32,12 @@ Full Query for `Project`
   }
 }[0]
 ```
+
+Main Query
+
+```apache
+*[_type == "about"]{
+  tagline,
+  profileIcon,
+}
+```

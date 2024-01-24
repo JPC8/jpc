@@ -16,3 +16,8 @@ export interface simpleProject {
     title: string;
     imageUrl: string;
   }
+
+  export interface about {
+    tagline: string;
+    profileIcon: any;
+  }
