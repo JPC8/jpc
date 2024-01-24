@@ -6,6 +6,7 @@ import {
     AvatarImage,
   } from "@/components/ui/avatar"
 import TimeCal from "../TimeCal";
+export const revalidate = 30 // revalidate at most 30 sec
 
 async function getData(){
     const query = `
