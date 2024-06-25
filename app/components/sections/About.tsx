@@ -37,7 +37,7 @@ export default async function About(){
 
             <div className="div flex flex-wrap justify-between py-3">
                 <div className="mb-2 basis-full p-3 sm:basis-full md:basis-full lg:basis-1/2">
-                    <div className="relative h-fit rounded-lg bg-secondary p-6 font-normal shadow hover:shadow-xl">
+                    <div className="relative h-fit rounded-lg bg-secondary p-6 font-normal shadow-sm">
 
                         <div className="prose prose-lg prose-blue max-w-none dark:prose-invert prose-a:text-primary prose-li:marker:text-primary">
                             <PortableText value={data.about[0].content} />
@@ -65,12 +65,13 @@ export default async function About(){
                 <div className="div flex flex-wrap">
                     {data.contact.map((dt, idx)=>(
                         <div key={idx} className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/2">
-                            <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
+                            <div className="relative h-fit rounded-lg bg-secondary shadow-sm hover:shadow">
                                 <Button asChild variant={"ghost"}>
                                     <Link href={dt.url} rel="noopener noreferrer" target="_blank">
                                         <Image src={urlFor(dt.Icon).url()} alt={dt.title+" image"} width={30} height={30} className="dark:invert"/>
                                         <div className="ml-3 flex items-center p-2">
-                                            <div className="font-bold">{dt.title}
+                                            <div className="font-bold">
+                                                {dt.title}
                                                 <span className="ml-2 font-normal text-muted-foreground">{dt.name}</span>
                                             </div>
                                         </div>

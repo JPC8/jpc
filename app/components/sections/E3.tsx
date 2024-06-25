@@ -19,7 +19,7 @@ export default function E3(){
                         <div className="div flex flex-wrap">
 
                             <div className="mb-5 basis-full px-3 sm:basis-full md:basis-1/2 lg:basis-1/2">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
+                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
                                     <div className="grid grid-cols-4">
                                         <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
                                             <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
@@ -92,7 +92,7 @@ export default function E3(){
                         <div className="div flex flex-wrap">
 
                             <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/2 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
+                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
                                     <div className="grid grid-cols-4">
                                         <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
                                             <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
@@ -142,13 +142,13 @@ export default function E3(){
                         <div className="div flex flex-wrap">
 
                             <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
+                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
                                     <button className="flex">
                                         <div className="from-Seton to-dagger/50 relative grid h-12 w-12 place-items-center rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
                                         <Laptop2 strokeWidth={0.5} absoluteStrokeWidth />
                                         </div>
                                         <div className="ml-3 flex items-center p-2">
-                                            <div className="BigProjectSTitle font-regular">Web Development
+                                            <div className="BigProjectSTitle font-regular">Web Dev
                                             </div>
                                         </div>
                                     </button>

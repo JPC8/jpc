@@ -10,7 +10,6 @@ export default function Home() {
     <div className="">
       <Main/>
       <Projects/>
-      <Activity/>
       <About/>
       <E3/>
     </div>
