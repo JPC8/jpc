@@ -1,5 +1,5 @@
 import { simpleProject } from "../lib/interface";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRightFromSquare, File } from "lucide-react";
@@ -10,11 +10,11 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 export default function ProjectCard(project:simpleProject) {
     return(
         <TooltipProvider>
-            <div  className="basis-full p-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
-                <Card className="rounded-lg bg-secondary p-1 shadow hover:shadow-sm" >
+            <div  className="basis-full p-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" >
+                <Card className="rounded-lg p-1 shadow hover:shadow-sm" >
                     {/* image */}
-                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background from-primary to-primary/50 hover:bg-gradient-to-r">
-                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 h-full w-11/12 rounded-3xl bg-blue-400" />
+                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background from-primary to-primary/50 bg-contain hover:bg-gradient-to-r">
+                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary bg-contain" />
                     </div>
 
                     {/* Stacks */}
@@ -37,22 +37,21 @@ export default function ProjectCard(project:simpleProject) {
                     </div>
 
                     {/* Content */}
-                    <CardContent className="mt-5 px-4 py-2">
-                        <div className="mb-2 flex content-center justify-between">
+                    <CardContent className="mt-8 min-h-full px-4 py-2 sm:min-h-52">
+                        <div className="flex content-center justify-between">
                             <h3 className="text-xl font-bold uppercase">{project.title}</h3>
                             <h4 className="text-right font-medium text-muted-foreground">{project.proDate}</h4>
                         </div>
-                        <p className="line-clamp-4 text-base font-normal">{project.description}</p>
-
-                        <div className="mt-4 grid grid-cols-2 gap-2 text-base">
-                            <Button asChild variant="ghost" className="bg-primary/5 p-2 hover:bg-primary/20">
-                                <Link href={`/projects/${project.slug}`}><File size={16} className="mr-2"/> View More</Link>
-                            </Button>
-                            <Button asChild variant="ghost"  className="bg-primary/5 p-2 hover:bg-primary/20">
-                                <Link href={project.link.url} rel="noopener noreferrer" target="_blank"><ArrowUpRightFromSquare className="mr-2" size={16}/> {project.link.title}</Link>
-                            </Button>
-                        </div>
+                        <p className="mt-2 line-clamp-5 text-base font-normal leading-loose">{project.description}</p>
                     </CardContent>
+                    <CardFooter className="bottom-2 mt-2 grid grid-cols-2 gap-2 text-base">
+                        <Button asChild variant="cardb">
+                            <Link href={`/projects/${project.slug}`}><File size={16} className="mr-2"/> View</Link>
+                        </Button>
+                        <Button asChild variant="cardb" >
+                            <Link href={project.link.url} rel="noopener noreferrer" target="_blank"><ArrowUpRightFromSquare className="mr-2" size={16}/> {project.link.title}</Link>
+                        </Button>
+                    </CardFooter>
                 </Card>
             </div>
     </TooltipProvider>

@@ -1,12 +1,16 @@
 import { about } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
+import { Github, Linkedin, Bot } from "lucide-react";
 import {
     Avatar,
     AvatarFallback,
     AvatarImage,
   } from "@/components/ui/avatar"
 import TimeCal from "../TimeCal";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 export const revalidate = 30 // revalidate at most 30 sec
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 async function getData(){
     const query = `
@@ -28,24 +32,66 @@ export default async function Main() {
             <div className="relative col-span-4 flex w-full items-center py-2">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                 <div className="text-4xl font-medium md:text-5xl lg:text-6xl">
-                    <div className="flex items-center">Hello,
-                    <Avatar>
+                    <div className="flex items-center">
+                    <Avatar className="ml-1">
                         <AvatarImage src="https://github.com/joshcyril.png" alt="@joshcyril"/>
                         {/* <AvatarImage src={urlFor(data.profileIcon).url()} alt="@joshcyril"/> */}
                         <AvatarFallback>JC</AvatarFallback>
                     </Avatar>
+                    <span className="ml-4">Hello,</span> 
                     </div>
-                    <div className="pt-4">I’m <span className="text-4xl font-bold text-primary md:text-5xl lg:text-6xl">Joshua Cyril</span></div>
+                    <div className="pt-4 sm:pt-6">I’m <span className="text-4xl font-bold text-primary md:text-5xl lg:text-6xl">Joshua Cyril</span></div>
                 </div>
             </div>
             <div className="relative col-span-4 flex w-full items-center py-1">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
-                <span className="text-xl font-medium md:text-2xl">{data.tagline}</span>
+                <span className="text-base font-medium sm:text-xl md:text-2xl">{data.tagline}</span>
             </div>
             <div className="relative col-span-4 flex w-full items-center py-1">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
-                <span className="pr-2 text-xl font-medium">UTC</span>
-                <span className="font-regular text-xl"> <TimeCal/> </span>
+                {/* <span className="pr-2 text-base font-medium sm:text-xl">UTC</span>
+                <span className="font-regular text-base sm:text-xl"> <TimeCal/> </span> */}
+                <div className="grid grid-cols-3 gap-2">
+                <TooltipProvider>
+                    
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button asChild variant="ghosth" >
+                                    <Link href="https://www.linkedin.com/in/joshcyril/" rel="noopener noreferrer" target="_blank"><Linkedin size={18}/></Link>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                LinkedIn | @ joshcyril
+                            </TooltipContent>
+                        </Tooltip>
+                        
+                    
+                    
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button asChild variant="ghosth" >
+                                    <Link href="https://discordapp.com/users/1136917465260097576" rel="noopener noreferrer" target="_blank"><Bot size={18}/></Link>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                Discord | @ joshcyril
+                            </TooltipContent>
+                        </Tooltip>
+                    
+                    
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button asChild variant="ghosth" >
+                                    <Link href="https://github.com/JoshCyril" rel="noopener noreferrer" target="_blank"><Github size={18}/></Link>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                Github | @ joshcyril
+                            </TooltipContent>
+                        </Tooltip>
+                    
+                    </TooltipProvider>
+                </div>
             </div>
             <div className="absolute top-10 col-span-4 flex items-center">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
