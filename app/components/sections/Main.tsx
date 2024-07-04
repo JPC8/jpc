@@ -1,6 +1,6 @@
 import { about } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
-import { Github, Linkedin, Bot } from "lucide-react";
+import { Github, Linkedin, Bot, Mail, ArrowUpRightFromSquare, Send } from "lucide-react";
 import {
     Avatar,
     AvatarFallback,
@@ -51,9 +51,9 @@ export default async function Main() {
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                 {/* <span className="pr-2 text-base font-medium sm:text-xl">UTC</span>
                 <span className="font-regular text-base sm:text-xl"> <TimeCal/> </span> */}
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 gap-2">
                 <TooltipProvider>
-                    
+
                         <Tooltip>
                             <TooltipTrigger>
                                 <Button asChild variant="ghosth" >
@@ -61,11 +61,10 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                LinkedIn | @ joshcyril
+                            <div className="flex gap-1">LinkedIn <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                         
-                    
                     
                         <Tooltip>
                             <TooltipTrigger>
@@ -74,11 +73,21 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                Discord | @ joshcyril
+                            <div className="flex gap-1">Discord <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                     
-                    
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button asChild variant="ghosth" >
+                                    <Link href="mailto:joshcyril@proton.me" rel="noopener noreferrer" target="_blank"><Mail size={18}/></Link>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className="flex gap-1">Email <Send size={10}/></div>
+                            </TooltipContent>
+                        </Tooltip>
+
                         <Tooltip>
                             <TooltipTrigger>
                                 <Button asChild variant="ghosth" >
@@ -86,7 +95,7 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                Github | @ joshcyril
+                                <div className="flex gap-1">Github <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                     

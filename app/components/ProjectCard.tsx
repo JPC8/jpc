@@ -31,7 +31,7 @@ export default function ProjectCard(project:simpleProject) {
                             </Tooltip>
                             ))}
                             <div className="grid h-[24px] w-[24px] rounded-md bg-muted text-xs font-semibold text-muted-foreground">
-                                <p className="place-self-center text-sm font-bold">+{project.tagCount}</p>
+                                <p className="place-self-center text-xs">+{project.tagCount}</p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ export default function ProjectCard(project:simpleProject) {
                     {/* Content */}
                     <CardContent className="mt-8 min-h-full px-4 py-2 sm:min-h-52">
                         <div className="flex content-center justify-between">
-                            <h3 className="text-xl font-bold uppercase">{project.title}</h3>
+                            <h3 className="text-xl font-bold">{project.title}</h3>
                             <h4 className="text-right font-medium text-muted-foreground">{project.proDate}</h4>
                         </div>
                         <p className="mt-2 line-clamp-5 text-base font-normal leading-loose">{project.description}</p>
