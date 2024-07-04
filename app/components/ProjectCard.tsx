@@ -13,8 +13,8 @@ export default function ProjectCard(project:simpleProject) {
             <div  className="basis-full p-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" >
                 <Card className="rounded-lg p-1 shadow hover:shadow-sm" >
                     {/* image */}
-                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background from-primary to-primary/50 bg-contain hover:bg-gradient-to-r">
-                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary bg-contain" />
+                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background bg-gradient-to-r from-primary/10 to-primary/20 object-cover">
+                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary object-cover shadow-lg hover:mt-5 transition duration-0 hover:duration-300 ease-in-out" />
                     </div>
 
                     {/* Stacks */}

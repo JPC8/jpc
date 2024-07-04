@@ -1,11 +1,45 @@
 import { aboutNContact } from "@/app/lib/interface";
-import { client, urlFor } from "@/app/lib/sanity";
-import { Button } from "@/components/ui/button";
+import { client } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import Link from "next/link";
 export const revalidate = 30 // revalidate at most 30 sec
-import Image from "next/image";
 
+import GraphSection from "./GraphSection";
+
+const datum = {
+    labels: [
+      'Eating',
+      'Drinking',
+      'Sleeping',
+      'Designing',
+      'Coding',
+      'Cycling',
+      'Running'
+    ],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [65, 59, 90, 81, 56, 55, 40],
+      fill: true,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgb(255, 99, 132)',
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
+    }, {
+      label: 'My Second Dataset',
+      data: [28, 48, 40, 19, 96, 27, 100],
+      fill: true,
+      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+      borderColor: 'rgb(54, 162, 235)',
+      pointBackgroundColor: 'rgb(54, 162, 235)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(54, 162, 235)'
+    }]
+  };
+
+
+  
 async function getData(){
     const query = `
     {
@@ -35,7 +69,7 @@ export default async function About(){
                 <span className="flex text-2xl font-bold md:text-3xl">About me</span>
             </div>
 
-            <div className="div flex flex-wrap justify-between py-3">
+            <div className="flex flex-wrap justify-between py-3">
                 <div className="mb-2 basis-full p-3 sm:basis-full md:basis-full lg:basis-1/2">
                     <div className="relative h-fit rounded-lg bg-secondary p-6 font-normal shadow-sm">
 
@@ -62,8 +96,8 @@ export default async function About(){
                     <span className="flex text-2xl font-bold md:text-3xl">Contact</span>
                 </div>
                 
-                <div className="div flex flex-wrap">
-                    {data.contact.map((dt, idx)=>(
+                <div className="flex flex-wrap justify-between py-3">
+                    {/* {data.contact.map((dt, idx)=>(
                         <div key={idx} className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/2">
                             <div className="relative h-fit rounded-lg bg-secondary shadow-sm hover:shadow">
                                 <Button asChild variant={"ghost"}>
@@ -79,8 +113,11 @@ export default async function About(){
                                 </Button>
                             </div>
                         </div>
-                    ))}
+                    ))} */}
                     
+                    <div className="relative h-full basis-full rounded-lg bg-secondary shadow-sm">
+                        <GraphSection datum={datum} />
+                    </div>
 
                 </div>
 
