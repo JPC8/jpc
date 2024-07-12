@@ -25,7 +25,7 @@ const data = {
       pointBackgroundColor: 'rgb(152, 152, 152)',
       pointBorderColor: '#eaeaea',
       pointHoverBackgroundColor: '#eaeaea',
-      pointHoverBorderColor: 'rgb(255, 99, 132)'
+      pointHoverBorderColor: 'rgb(152, 152, 152)'
     }, 
     {
       label: 'This Year',

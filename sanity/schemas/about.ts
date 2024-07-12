@@ -16,4 +16,12 @@ export default {
               type: 'block'
             }]
           },
-    ]}
+          {
+            name: 'pdfFile',
+            type: 'file',  
+            options: {
+              accept: 'application/pdf'
+            }
+          }
+    ]
+  }

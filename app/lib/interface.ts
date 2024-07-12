@@ -46,6 +46,10 @@ export interface about {
   tagline: string;
 }
 
+export interface cvPDF{
+  fileURL: any;
+}
+
 export interface aboutNTag {
   about:[{
     content: any;
@@ -57,6 +61,29 @@ export interface aboutNTag {
       tag_url: any;
     }
   ]
-  
-  
+}
+
+export interface Ee3 {
+    exp:[
+      {
+      title: string,
+      yoe: string,
+      content: any,
+      company:
+        {name: string,
+        location: string,
+        url: string,
+        Img: any
+        }
+      }
+    ],
+    edu:[{
+      title: string,
+      uni:{
+        name: string,
+        location: string,
+        url: string,
+        Img: any
+      }
+    }]
 }
