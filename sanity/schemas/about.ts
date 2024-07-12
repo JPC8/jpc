@@ -16,15 +16,4 @@ export default {
               type: 'block'
             }]
           },
-          {
-            name: 'profileImg',
-            type: 'image',
-            title: 'Profile Image'
-          },
-          {
-            name: 'profileIcon',
-            type: 'image',
-            title: 'Profile Icon'
-          },
-
     ]}

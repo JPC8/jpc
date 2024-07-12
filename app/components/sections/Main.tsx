@@ -15,8 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 async function getData(){
     const query = `
     *[_type == "about"]{
-        tagline,
-        profileIcon,
+        tagline
       }[0]
     `;
 
@@ -31,16 +30,16 @@ export default async function Main() {
         <div className="z-10 grid w-11/12 max-w-screen-2xl grid-cols-1 gap-6 px-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <div className="relative col-span-4 flex w-full items-center py-2">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
-                <div className="text-4xl font-medium md:text-5xl lg:text-6xl">
+                <div className="text-4xl font-medium md:text-5xl">
                     <div className="flex items-center">
                     <Avatar className="ml-1">
                         <AvatarImage src="https://github.com/joshcyril.png" alt="@joshcyril"/>
                         {/* <AvatarImage src={urlFor(data.profileIcon).url()} alt="@joshcyril"/> */}
                         <AvatarFallback>JC</AvatarFallback>
                     </Avatar>
-                    <span className="ml-4">Hello,</span> 
+                    <span className="ml-2 md:ml-4">Hello,</span> 
                     </div>
-                    <div className="pt-4 sm:pt-6">I’m <span className="text-4xl font-bold text-primary md:text-5xl lg:text-6xl">Joshua Cyril</span></div>
+                    <div className="pt-4 sm:pt-6">I’m <span className="text-4xl font-bold text-primary md:text-5xl">Joshua Cyril</span></div>
                 </div>
             </div>
             <div className="relative col-span-4 flex w-full items-center py-1">

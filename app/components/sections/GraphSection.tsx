@@ -41,7 +41,7 @@ const data = {
   };
 
 
-export default function  GraphSection(datum: any)  {
+export default function  GraphSection()  {
     return (
         <div className="mb-2 basis-full flex-col p-3">
           <h1>Example 1: Line Chart</h1>
