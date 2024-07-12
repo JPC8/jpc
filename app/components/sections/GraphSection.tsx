@@ -9,43 +9,43 @@ const Radar = dynamic(() => import('react-chartjs-2').then((mod) => mod.Radar), 
 
 const data = {
     labels: [
-      'Eating',
-      'Drinking',
-      'Sleeping',
-      'Designing',
       'Coding',
-      'Cycling',
-      'Running'
+      'Designing',
+      'Problem-solving',
+      'Communication',
+      'New skills'
     ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [65, 59, 90, 81, 56, 55, 40],
+    datasets: [
+      {
+      label: 'Last year',
+      data: [80, 70, 80, 90, 40],
       fill: true,
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgb(255, 99, 132)',
-      pointBackgroundColor: 'rgb(255, 99, 132)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
+      backgroundColor: 'rgba(152, 152, 152, 0.2)',
+      borderColor: 'rgb(152, 152, 152)',
+      pointBackgroundColor: 'rgb(152, 152, 152)',
+      pointBorderColor: '#eaeaea',
+      pointHoverBackgroundColor: '#eaeaea',
       pointHoverBorderColor: 'rgb(255, 99, 132)'
-    }, {
-      label: 'My Second Dataset',
-      data: [28, 48, 40, 19, 96, 27, 100],
+    }, 
+    {
+      label: 'This Year',
+      data: [90, 80, 80, 70, 100],
       fill: true,
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
       borderColor: 'rgb(54, 162, 235)',
       pointBackgroundColor: 'rgb(54, 162, 235)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
+      pointBorderColor: '#eaeaea',
+      pointHoverBackgroundColor: '#eaeaea',
       pointHoverBorderColor: 'rgb(54, 162, 235)'
-    }]
+    }
+  ]
   };
 
 
 export default function  GraphSection()  {
     return (
-        <div className="mb-2 basis-full flex-col p-3">
-          <h1>Example 1: Line Chart</h1>
-          <Radar data={data} />
+        <div className="mb-2 basis-full flex-col">
+          <Radar data={data} className='h-80 max-h-80 w-full max-w-full invert filter-none dark:hue-rotate-180' />
         </div>
       );
 }

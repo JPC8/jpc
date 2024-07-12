@@ -44,19 +44,17 @@ export interface tags {
 
 export interface about {
   tagline: string;
-  profileIcon: any;
 }
 
-export interface aboutNContact {
+export interface aboutNTag {
   about:[{
     content: any;
   }],
-  contact:[
+  tags:[
     {
-      title: string,
-      name: string,
-      url: string,
-      Icon: any,
+      tag_name: string,
+      tag_count: number,
+      tag_url: any;
     }
   ]
   
