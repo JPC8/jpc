@@ -56,7 +56,7 @@ export default async function About(){
                         {data.tags.map((tag, idx) =>(
                         <Tooltip key={idx}>
                             <TooltipTrigger>
-                                <div  className="m-1 flex items-center rounded-md border border-primary/70 px-2 py-0.5 text-xs leading-5">
+                                <div  className="m-1 flex items-center rounded-md border border-primary/40 px-2 py-0.5 text-xs leading-5 md:text-sm">
                                     {tag.tag_name}
                                 </div>
                             </TooltipTrigger>

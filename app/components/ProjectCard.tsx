@@ -11,10 +11,10 @@ export default function ProjectCard(project:simpleProject) {
     return(
         <TooltipProvider>
             <div  className="basis-full p-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" >
-                <Card className="rounded-lg p-1 shadow hover:shadow-sm" >
+                <Card className="rounded-lg p-1 shadow hover:shadow-md" >
                     {/* image */}
-                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background bg-gradient-to-r from-primary/10 to-primary/20 object-cover">
-                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary object-cover shadow-lg hover:mt-5 transition duration-0 hover:duration-300 ease-in-out" />
+                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background bg-gradient-to-r from-primary/10 to-primary/20 object-cover shadow-inner">
+                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary object-cover shadow-2xl transition duration-0 ease-in-out hover:mt-5 hover:duration-300" />
                     </div>
 
                     {/* Stacks */}
@@ -23,7 +23,7 @@ export default function ProjectCard(project:simpleProject) {
                             {project.tags.map((tag, idx) =>(
                             <Tooltip key={idx}>
                                 <TooltipTrigger>
-                                    <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={24} height={24} className="rounded-md"/>
+                                    <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={24} height={24} className="rounded-md grayscale hover:grayscale-0"/>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>{tag.title}</p>
