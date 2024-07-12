@@ -16,7 +16,7 @@ async function getData(){
 
 export default async function Home() {
   const data:cvPDF = await getData();
-  console.log(data);
+  // console.log(data);
   return (
     <div className="mb-10 grid h-fit place-items-center py-6 md:mt-24">
 
@@ -27,10 +27,11 @@ export default async function Home() {
                 <span className="flex text-2xl font-bold md:text-3xl">CV</span>
             </div>
 
-            <div className="relative mb-2 mt-0 basis-full rounded-lg p-3">                
+            <div className="relative mb-2 mt-0 basis-full rounded-lg p-3">             
               <div className="relative h-full basis-full rounded-lg bg-secondary shadow-sm">
                 {/* <embed src={`https://cdn.sanity.io/files/99rn9hgb/production/91c687e4c0bf04624f96ad0640888fc673cc35ba.pdf`} type="application/pdf" className="h-screen w-full rounded-lg"/> */}
-                <embed src={`${data.fileURL}`} type="application/pdf" className="h-screen w-full rounded-lg"/>
+                <embed src={data.fileURL} type="application/pdf" className="h-screen w-full rounded-lg"/>
+                
               </div>  
             </div>
         </div>

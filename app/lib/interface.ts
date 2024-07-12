@@ -47,7 +47,7 @@ export interface about {
 }
 
 export interface cvPDF{
-  fileURL: any;
+  fileURL: string;
 }
 
 export interface aboutNTag {
