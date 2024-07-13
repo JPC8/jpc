@@ -17,7 +17,7 @@ async function getData(){
         "tags": tags[0...3]->{
           title,
           tagImg
-        } | order(title asc),
+        },
         "tagCount": count(tags)-3
       }
     `;

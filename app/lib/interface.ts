@@ -44,51 +44,21 @@ export interface tags {
 
 export interface about {
   tagline: string;
+  profileIcon: any;
 }
 
-export interface cvPDF{
-  fileURL: string;
-}
-
-export interface footerData{
-  copyright: string;
-  udDate: Date;
-}
-
-export interface aboutNTag {
+export interface aboutNContact {
   about:[{
     content: any;
   }],
-  tags:[
+  contact:[
     {
-      tag_name: string,
-      tag_count: number,
-      tag_url: any;
+      title: string,
+      name: string,
+      url: string,
+      Icon: any,
     }
   ]
-}
-
-export interface Ee3 {
-    exp:[
-      {
-      title: string,
-      yoe: string,
-      content: any,
-      company:
-        {name: string,
-        location: string,
-        url: string,
-        Img: any
-        }
-      }
-    ],
-    edu:[{
-      title: string,
-      uni:{
-        name: string,
-        location: string,
-        url: string,
-        Img: any
-      }
-    }]
+  
+  
 }
