@@ -104,7 +104,7 @@ export default async function Main() {
             <div className="absolute top-10 col-span-4 flex items-center">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                 <span className="text-md pr-2 font-medium">last visit:</span>
-                <span className="text-md font-regular">London, UK </span>
+                <span className="text-md font-regular">UK</span>
             </div>
         </div>
     </div>

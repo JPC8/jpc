@@ -22,6 +22,16 @@ export default {
             options: {
               accept: 'application/pdf'
             }
+          },
+          {
+            name: 'copyright',
+            type: 'string',
+            title: 'Copyright Date'
+          },
+          {
+            name: 'udDate',
+            type: 'datetime',
+            title: 'Updated Date'
           }
     ]
   }

@@ -50,6 +50,11 @@ export interface cvPDF{
   fileURL: string;
 }
 
+export interface footerData{
+  copyright: string;
+  udDate: Date;
+}
+
 export interface aboutNTag {
   about:[{
     content: any;
