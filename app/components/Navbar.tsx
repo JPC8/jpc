@@ -10,7 +10,7 @@ async function getData(){
     const query = `
     *[_type == "about"]{
       "fileURL":pdfFile.asset->url
-    }
+    }[0]
     `;
 
     const data = await client.fetch(query);
@@ -19,12 +19,10 @@ async function getData(){
 
 export default async function Navbar(){
     const data:cvPDF = await getData();
-    console.log(data);
     return (
         <div className="grid place-items-center">
             <div className="fixed bottom-8 top-auto z-40 h-fit w-fit rounded-lg border border-border shadow-lg md:bottom-auto md:top-8">
                 <div className="flex items-center justify-around gap-4 rounded-lg bg-secondary/80 p-2 text-xl backdrop-blur-sm">
-                {data.fileURL}
                     <Button asChild variant="ghosth" size="icon">
                         <Link href={"/"}><Image src="/logo.svg" width={20} height={40} alt="logo" className="hue-rotate-180 invert dark:filter-none" priority/></Link>
                     </Button>

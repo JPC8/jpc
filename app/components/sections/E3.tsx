@@ -60,11 +60,11 @@ export default async function E3(){
                             {data.exp.map((eu, idx) =>(
                                 <div key={idx} className="mb-5 basis-full px-3">
                                     <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
-                                        <div className="grid grid-cols-4">
+                                        <div className="grid grid-cols-5">
                                             <div className="relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-r from-primary/10 to-primary/20 object-cover shadow-inner">
                                                 <Image src={urlFor(eu.company.Img).url()} alt={eu.company.name+" image"} width={120} height={120} className="z-20 ml-10 h-full w-full rounded-3xl bg-primary object-cover shadow-2xl transition duration-0 ease-in-out hover:mr-3 hover:duration-300" />
                                             </div>
-                                            <div className="col-span-3 ml-2 p-2 pr-3">
+                                            <div className="col-span-4 ml-2 p-2 pr-3">
                                                 <div className="mb-2 grid grid-cols-3">
                                                     <div className="col-span-1 text-lg font-semibold">{eu.title}</div>
                                                     <div className="text-md col-span-2 mt-1 text-right font-medium">{eu.yoe}</div>

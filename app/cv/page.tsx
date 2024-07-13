@@ -7,7 +7,7 @@ async function getData(){
     const query = `
     *[_type == "about"]{
       "fileURL":pdfFile.asset->url 
-    }
+    }[0]
     `;
 
     const data = await client.fetch(query);
@@ -16,7 +16,6 @@ async function getData(){
 
 export default async function Home() {
   const data:cvPDF = await getData();
-  // console.log(data);
   return (
     <div className="mb-10 grid h-fit place-items-center py-6 md:mt-24">
 
@@ -24,7 +23,7 @@ export default async function Home() {
 
             <div className="relative col-span-4 mb-4 ml-3 flex w-full basis-full items-center py-2">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
-                <span className="flex text-2xl font-bold md:text-3xl">CV</span>
+                <span className="flex text-2xl font-bold md:text-3xl">Curriculum Vitae</span>
             </div>
 
             <div className="relative mb-2 mt-0 basis-full rounded-lg p-3">             
