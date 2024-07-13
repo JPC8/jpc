@@ -17,21 +17,14 @@ export default {
             }]
           },
           {
-            name: 'pdfFile',
-            type: 'file',  
-            options: {
-              accept: 'application/pdf'
-            }
+            name: 'profileImg',
+            type: 'image',
+            title: 'Profile Image'
           },
           {
-            name: 'copyright',
-            type: 'string',
-            title: 'Copyright Date'
+            name: 'profileIcon',
+            type: 'image',
+            title: 'Profile Icon'
           },
-          {
-            name: 'udDate',
-            type: 'datetime',
-            title: 'Updated Date'
-          }
-    ]
-  }
+
+    ]}
