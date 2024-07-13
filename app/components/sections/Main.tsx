@@ -1,6 +1,6 @@
 import { about } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
-import { Github, Linkedin, Bot } from "lucide-react";
+import { Github, Linkedin, Bot, Mail, ArrowUpRightFromSquare, Send } from "lucide-react";
 import {
     Avatar,
     AvatarFallback,
@@ -15,8 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 async function getData(){
     const query = `
     *[_type == "about"]{
-        tagline,
-        profileIcon,
+        tagline
       }[0]
     `;
 
@@ -31,16 +30,16 @@ export default async function Main() {
         <div className="z-10 grid w-11/12 max-w-screen-2xl grid-cols-1 gap-6 px-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <div className="relative col-span-4 flex w-full items-center py-2">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
-                <div className="text-4xl font-medium md:text-5xl lg:text-6xl">
+                <div className="text-4xl font-medium md:text-5xl">
                     <div className="flex items-center">
                     <Avatar className="ml-1">
                         <AvatarImage src="https://github.com/joshcyril.png" alt="@joshcyril"/>
                         {/* <AvatarImage src={urlFor(data.profileIcon).url()} alt="@joshcyril"/> */}
                         <AvatarFallback>JC</AvatarFallback>
                     </Avatar>
-                    <span className="ml-4">Hello,</span> 
+                    <span className="ml-2 md:ml-4">Hello,</span> 
                     </div>
-                    <div className="pt-4 sm:pt-6">I’m <span className="text-4xl font-bold text-primary md:text-5xl lg:text-6xl">Joshua Cyril</span></div>
+                    <div className="pt-4 sm:pt-6">I’m <span className="text-4xl font-bold text-primary md:text-5xl">Joshua Cyril</span></div>
                 </div>
             </div>
             <div className="relative col-span-4 flex w-full items-center py-1">
@@ -51,9 +50,9 @@ export default async function Main() {
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                 {/* <span className="pr-2 text-base font-medium sm:text-xl">UTC</span>
                 <span className="font-regular text-base sm:text-xl"> <TimeCal/> </span> */}
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 gap-2">
                 <TooltipProvider>
-                    
+
                         <Tooltip>
                             <TooltipTrigger>
                                 <Button asChild variant="ghosth" >
@@ -61,11 +60,10 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                LinkedIn | @ joshcyril
+                            <div className="flex gap-1">LinkedIn <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                         
-                    
                     
                         <Tooltip>
                             <TooltipTrigger>
@@ -74,11 +72,21 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                Discord | @ joshcyril
+                            <div className="flex gap-1">Discord <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                     
-                    
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button asChild variant="ghosth" >
+                                    <Link href="mailto:joshcyril@proton.me" rel="noopener noreferrer" target="_blank"><Mail size={18}/></Link>
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className="flex gap-1">Email <Send size={10}/></div>
+                            </TooltipContent>
+                        </Tooltip>
+
                         <Tooltip>
                             <TooltipTrigger>
                                 <Button asChild variant="ghosth" >
@@ -86,7 +94,7 @@ export default async function Main() {
                                 </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                                Github | @ joshcyril
+                                <div className="flex gap-1">Github <ArrowUpRightFromSquare size={10}/></div>
                             </TooltipContent>
                         </Tooltip>
                     
@@ -96,7 +104,7 @@ export default async function Main() {
             <div className="absolute top-10 col-span-4 flex items-center">
                 <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                 <span className="text-md pr-2 font-medium">last visit:</span>
-                <span className="text-md font-regular">London, UK </span>
+                <span className="text-md font-regular">UK</span>
             </div>
         </div>
     </div>

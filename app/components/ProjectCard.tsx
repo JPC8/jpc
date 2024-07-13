@@ -11,10 +11,10 @@ export default function ProjectCard(project:simpleProject) {
     return(
         <TooltipProvider>
             <div  className="basis-full p-3 sm:basis-1/2 md:basis-1/3 lg:basis-1/4" >
-                <Card className="rounded-lg p-1 shadow hover:shadow-sm" >
+                <Card className="rounded-lg p-1 shadow hover:shadow-md" >
                     {/* image */}
-                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background from-primary to-primary/50 bg-contain hover:bg-gradient-to-r">
-                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary bg-contain" />
+                    <div className="relative grid h-40 place-items-center overflow-hidden rounded-lg bg-background bg-gradient-to-r from-primary/10 to-primary/20 object-cover shadow-inner">
+                        <Image src={urlFor(project.proImg).url()} alt={project.slug+" image"} width={720} height={720} className="z-20 mt-12 w-11/12 rounded-3xl bg-primary object-cover shadow-2xl transition duration-0 ease-in-out hover:mt-5 hover:duration-300" />
                     </div>
 
                     {/* Stacks */}
@@ -23,7 +23,7 @@ export default function ProjectCard(project:simpleProject) {
                             {project.tags.map((tag, idx) =>(
                             <Tooltip key={idx}>
                                 <TooltipTrigger>
-                                    <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={24} height={24} className="rounded-md"/>
+                                    <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={24} height={24} className="rounded-md grayscale hover:grayscale-0"/>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>{tag.title}</p>
@@ -31,7 +31,7 @@ export default function ProjectCard(project:simpleProject) {
                             </Tooltip>
                             ))}
                             <div className="grid h-[24px] w-[24px] rounded-md bg-muted text-xs font-semibold text-muted-foreground">
-                                <p className="place-self-center text-sm font-bold">+{project.tagCount}</p>
+                                <p className="place-self-center text-xs">+{project.tagCount}</p>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ export default function ProjectCard(project:simpleProject) {
                     {/* Content */}
                     <CardContent className="mt-8 min-h-full px-4 py-2 sm:min-h-52">
                         <div className="flex content-center justify-between">
-                            <h3 className="text-xl font-bold uppercase">{project.title}</h3>
+                            <h3 className="text-xl font-bold">{project.title}</h3>
                             <h4 className="text-right font-medium text-muted-foreground">{project.proDate}</h4>
                         </div>
                         <p className="mt-2 line-clamp-5 text-base font-normal leading-loose">{project.description}</p>

@@ -45,7 +45,7 @@ async function getData(slug:string){
         "tags": tags[]->{
           title,
           tagImg
-        }
+        } | order(title asc),
       }[0]
     `;
 
@@ -60,59 +60,55 @@ export default async function ProjectRoute({params}:{params:{slug:string}}){
             <div className="z-10 w-11/12 max-w-screen-2xl">
 
                 
-                <div className="relative col-span-4 mb-4 ml-3 mt-8 flex w-full basis-full items-center py-2">
+                <div className="relative col-span-4 mb-4 ml-3 mt-0 flex w-full basis-full items-center py-2 md:mt-8">
                     <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                     <h1 className="flex text-2xl font-bold md:text-3xl">{data.title}</h1>
                 </div>
-
+                
+                
                 <div className="flex flex-wrap py-3">
-                    <div className="basis-full p-3 md:p-6 lg:p-12">
+
+                <div className="relative mb-2 mt-0 basis-full p-3 sm:basis-full md:basis-full lg:basis-1/2">                
+                    <div className="relative h-full basis-full rounded-lg bg-secondary p-6 shadow-sm">
+                        {/* image */}
                         <div className="flex basis-full justify-center rounded-xl border bg-cover bg-center">
                             <Image src={urlFor(data.proImg).url()} alt={data.slug+" image"} width={720} height={720} className="w-full rounded-xl bg-blue-400 bg-cover bg-center" priority />
                         </div>
+                        
+                        {/* skills */}
+                        <div className="mt-3 basis-full p-3">
+                            <div className="mt-2 flex flex-wrap">
+                                <div className="mt-2 flex flex-wrap">
+                                {data.tags.map((tag, idx) =>(
+                                    <div key={idx} className="m-1 flex items-center rounded-md border border-primary/20 p-1 pr-2 text-sm leading-5 grayscale hover:grayscale-0">
+                                        <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={22} height={22} className="mr-2 rounded-md"/> {tag.title}
+                                    </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+                </div>
 
-
+                <div className="relative mb-2 mt-0 basis-full p-3 sm:basis-full md:basis-full lg:basis-1/2">                
+                    <div className="relative h-full basis-full rounded-lg bg-secondary p-6 shadow-sm">
+                        {/* overview */}
+                        <div className="prose prose-lg prose-blue max-w-none text-base dark:prose-invert prose-a:text-primary prose-li:marker:text-primary md:text-lg">
+                            <PortableText value={data.summary} />
+                        </div>
+                    </div>
+                </div>
 
                     <div className="relative col-span-4 ml-3 mt-8 flex w-full basis-full items-center py-2">
                         <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
                         <h2 className="flex text-xl font-bold md:text-3xl">Summary</h2>
                     </div>
 
-                    <div className="mt-3 basis-full p-3">
-                        <Card className="relative h-full rounded-lg bg-secondary" >
-                            <CardContent className="p-2">
-                                <div className="prose prose-lg prose-blue max-w-none dark:prose-invert prose-a:text-primary prose-li:marker:text-primary">
-                                    <PortableText value={data.summary} />
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    <div className="mt-3 basis-full p-3">
-                        <Card className="relative h-full rounded-lg bg-secondary" >
-                            <CardContent className="p-4">
-                            <div className="align-center flex h-fit w-full flex-wrap items-center justify-center gap-4 rounded-lg bg-secondary">
-                                {data.tags.map((tag, idx) =>(
-                                    <div key={idx} className="h-fit basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5">
-                                        <div className="item-center flex">
-                                            <div  className="inline-flex">
-                                                <Image src={urlFor(tag.tagImg).url()} alt={tag.title+" image"} width={20} height={20} className="mr-2 rounded-md" />
-                                                <span className="text-md font-medium">{tag.title}</span>
-                                            </div>        
-                                        </div>
-                                        
-                                    </div>
-                                ))}
-                            </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    
                     <div className="mt-3 flex basis-full flex-wrap p-3">
                         <Card className="h-full rounded-lg bg-secondary p-1" >
                             <CardContent className="p-4">
-                                <div className="prose prose-lg prose-blue max-w-none dark:prose-invert prose-a:text-primary prose-li:marker:text-primary">
+                                <div className="prose prose-lg prose-blue max-w-none text-base dark:prose-invert prose-a:text-primary prose-li:marker:text-primary md:text-lg">
                                     <PortableText value={data.content} />
                                 </div>
                             </CardContent>

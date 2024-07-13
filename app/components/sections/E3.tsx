@@ -1,6 +1,46 @@
 import { Laptop2, Box, PencilRuler } from "lucide-react";
+import { Ee3 } from "@/app/lib/interface";
+import { client,  urlFor } from "@/app/lib/sanity";
+import Link from "next/link";
+import Image from "next/image";
+import { PortableText } from "@portabletext/react";
 
-export default function E3(){
+
+export const revalidate = 30 // revalidate at most 30 sec
+
+async function getData(){
+    const query = `
+    {
+        "exp":*[_type == "experience"]{
+            title,
+            yoe,
+            content,
+            company{
+            name,
+            location,
+            url,
+            Img
+            }
+        },
+        "edu":*[_type == "education"]{
+        title,
+        uni{
+            name,
+            location,
+            url,
+            Img
+            }
+        }
+
+    }
+    `;
+
+    const data = await client.fetch(query);
+    return data;
+}
+
+export default async function E3(){
+    const data:Ee3 = await getData();
     return(
         <div className="mb-5 grid h-fit place-items-center py-6">
 
@@ -17,72 +57,38 @@ export default function E3(){
 
                     <div className="mb-2 basis-full p-3 sm:basis-full md:basis-full lg:basis-1/2">
                         <div className="div flex flex-wrap">
-
-                            <div className="mb-5 basis-full px-3 sm:basis-full md:basis-1/2 lg:basis-1/2">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
-                                    <div className="grid grid-cols-4">
-                                        <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                            <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
-                                        </div>
-                                        <div className="col-span-3 ml-2 p-2 pr-3">
-                                            <div className="mb-2 grid grid-cols-5">
-                                                <div className="BigProjectSTitle col-span-3 text-xl font-semibold">Analyst</div>
-                                                <div className="col-span-2 mt-1 text-right font-medium">2021-23</div>
+                            {data.exp.map((eu, idx) =>(
+                                <div key={idx} className="mb-5 basis-full px-3">
+                                    <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
+                                        <div className="grid grid-cols-5">
+                                            <div className="relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-r from-primary/10 to-primary/20 object-cover shadow-inner">
+                                                <Image src={urlFor(eu.company.Img).url()} alt={eu.company.name+" image"} width={120} height={120} className="z-20 ml-10 h-full w-full rounded-3xl bg-primary object-cover shadow-2xl transition duration-0 ease-in-out hover:mr-3 hover:duration-300" />
                                             </div>
-                                            <div className="flex items-center text-sm">
-                                                Acuity Knowledge partners, Bangalore
+                                            <div className="col-span-4 ml-2 p-2 pr-3">
+                                                <div className="mb-2 grid grid-cols-3">
+                                                    <div className="col-span-1 text-lg font-semibold">{eu.title}</div>
+                                                    <div className="text-md col-span-2 mt-1 text-right font-medium">{eu.yoe}</div>
+                                                </div>
+                                                <div className="flex items-center text-sm">
+                                                    {eu.company.name} | {eu.company.location}
+                                                </div>
+
                                             </div>
 
                                         </div>
 
+                                        <div className="prose prose-lg prose-blue ml-4 max-w-none p-3 text-base dark:prose-invert prose-a:text-primary prose-li:marker:text-primary md:text-lg">
+                                            <PortableText value={eu.content} />
+                                        </div>
+                                        
                                     </div>
-                                    <div className="ml-4 p-3">
-                                        <ul className="list-disc">
-                                            <li>Worked on VBA</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                                            <li>Molestias id nostrum excepturi deserunt</li>
-                                            <li> ducimus consequatur officia</li>
-                                        </ul>
-                                    </div>
-
                                 </div>
-                            </div>
-
-                            <div className="mb-5 basis-full px-3 sm:basis-full md:basis-1/2 lg:basis-1/2">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
-                                    <div className="grid grid-cols-4">
-                                        <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                            <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
-                                        </div>
-                                        <div className="col-span-3 ml-2 p-2 pr-3">
-                                            <div className="mb-2 grid grid-cols-5">
-                                                <div className="BigProjectSTitle col-span-3 text-xl font-semibold">Analyst</div>
-                                                <div className="col-span-2 mt-1 text-right font-medium">2021-23</div>
-                                            </div>
-                                            <div className="flex items-center text-sm">
-                                                Acuity Knowledge partners, Bangalore
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <div className="ml-4 p-3">
-                                        <ul className="list-disc">
-                                            <li>Worked on VBA</li>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </li>
-                                            <li>Molestias id nostrum excepturi deserunt</li>
-                                            <li> ducimus consequatur officia</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-
+                        	))}
                         </div>
                     </div>
 
 
-                    <div className="relative mb-2 mt-44 basis-full p-3 sm:mt-44 sm:basis-full md:mt-44 md:basis-full lg:mt-0 lg:basis-1/4">
+                    <div className="relative mb-2 mt-24 basis-full p-3 sm:mt-24 sm:basis-full md:basis-full lg:mt-0 lg:basis-1/4">
 
                         <div className="absolute -top-[5.5rem] -ml-0.5 flex basis-full items-center py-2">
                             <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
@@ -90,49 +96,34 @@ export default function E3(){
                         </div>
 
                         <div className="div flex flex-wrap">
-
-                            <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/2 lg:basis-full">
+                            
+                            {data.edu.map((ed, idx) =>(
+                            <div key={idx} className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/2 lg:basis-full">
                                 <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
                                     <div className="grid grid-cols-4">
-                                        <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                            <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
+                                    <div className="relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg bg-gradient-to-r from-primary/10 to-primary/20 object-cover shadow-inner">
+                                            <Image src={urlFor(ed.uni.Img).url()} alt={ed.uni.name+" image"} width={120} height={120} className="z-20 ml-10 h-full w-full rounded-3xl bg-primary object-cover shadow-2xl transition duration-0 ease-in-out hover:mr-3 hover:duration-300" />
                                         </div>
                                         <div className="col-span-3 ml-2 p-2">
-                                            <div className="BigProjectSTitle mb-1 text-xl font-semibold">Masters in CS</div>
-                                            <div className="flex items-center text-sm">
-                                                DCE Affiliated to Anna University, Chennai
+                                            <div className="BigProjectSTitle mb-1 text-xl font-semibold">{ed.title}</div>
+                                            <div className="flex-col items-center text-sm">
+                                                <div>{ed.uni.name} </div>
+                                                <div>{ed.uni.location} </div>
+                                                
                                             </div>
-
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-
-                            <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/2 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
-                                    <div className="grid grid-cols-4">
-                                        <div className="from-Seton to-dagger/50 relative col-span-1 grid h-20 w-full place-items-center overflow-hidden rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                            <div className="rounded-tr-1xl z-20 ml-5 h-full w-full rounded-xl bg-blue-400 bg-cover bg-center" ></div>
-                                        </div>
-                                        <div className="col-span-3 ml-2 p-2">
-                                            <div className="BigProjectSTitle mb-1 text-xl font-semibold">Bachelors in CS</div>
-                                            <div className="flex items-center text-sm">
-                                                DCE Affiliated to Anna University, Chennai
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            ))}
 
                         </div>
 
                     </div>
 
 
-                    <div className="relative mb-2 mt-44 basis-full p-3 sm:mt-44 sm:basis-full md:mt-44 md:basis-full lg:mt-0 lg:basis-1/4">
+                    <div className="relative mb-2 mt-24 basis-full p-3 sm:mt-24 sm:basis-full md:basis-full lg:mt-0 lg:basis-1/4">
 
                         <div className="absolute -top-[5.5rem] -ml-0.5 flex basis-full items-center py-2">
                             <div className="absolute -ml-[13px] h-full w-1 rounded-3xl bg-primary"></div>
@@ -142,44 +133,38 @@ export default function E3(){
                         <div className="div flex flex-wrap">
 
                             <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow-sm">
-                                    <button className="flex">
-                                        <div className="from-Seton to-dagger/50 relative grid h-12 w-12 place-items-center rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                        <Laptop2 strokeWidth={0.5} absoluteStrokeWidth />
+                                <div className="relative flex h-fit rounded-lg bg-secondary p-1 shadow-sm">
+                                    <div className="relative grid h-12 w-12 place-items-center rounded-lg">
+                                    <Laptop2 strokeWidth={0.5} absoluteStrokeWidth />
+                                    </div>
+                                    <div className="ml-3 flex items-center p-2">
+                                        <div className="font-regular">Web Dev
                                         </div>
-                                        <div className="ml-3 flex items-center p-2">
-                                            <div className="BigProjectSTitle font-regular">Web Dev
-                                            </div>
-                                        </div>
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
-                                    <button className="flex">
-                                        <div className="from-Seton to-dagger/50 relative grid h-12 w-12 place-items-center rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                        <Box strokeWidth={0.5} absoluteStrokeWidth />
+                                <div className="relative flex h-fit rounded-lg bg-secondary p-1 shadow-sm">
+                                    <div className="relative grid h-12 w-12 place-items-center rounded-lg">
+                                    <Box strokeWidth={0.5} absoluteStrokeWidth />
+                                    </div>
+                                    <div className="ml-3 flex items-center p-2">
+                                        <div className="font-regular">Blockchain
                                         </div>
-                                        <div className="ml-3 flex items-center p-2">
-                                            <div className="BigProjectSTitle font-regular">Blockchain
-                                            </div>
-                                        </div>
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="mb-5 basis-full px-3 sm:basis-1/2 md:basis-1/3 lg:basis-full">
-                                <div className="relative h-fit rounded-lg bg-secondary p-1 shadow hover:shadow-xl">
-                                    <button className="flex">
-                                        <div className="from-Seton to-dagger/50 relative grid h-12 w-12 place-items-center rounded-lg transition-all delay-150 ease-in-out hover:bg-gradient-to-t">
-                                        <PencilRuler strokeWidth={0.5} absoluteStrokeWidth />
+                                <div className="relative flex h-fit rounded-lg bg-secondary p-1 shadow-sm">
+                                    <div className="relative grid h-12 w-12 place-items-center rounded-lg">
+                                    <PencilRuler strokeWidth={0.5} absoluteStrokeWidth />
+                                    </div>
+                                    <div className="ml-3 flex items-center p-2">
+                                        <div className="font-regular">Branding, UI/UX
                                         </div>
-                                        <div className="ml-3 flex items-center p-2">
-                                            <div className="BigProjectSTitle font-regular">Branding, UI/UX
-                                            </div>
-                                        </div>
-                                    </button>
+                                    </div>
                                 </div>
                             </div>
 
